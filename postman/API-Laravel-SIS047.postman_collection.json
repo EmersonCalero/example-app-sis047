@@ -1,0 +1,1218 @@
+{
+  "info": {
+    "_postman_id": "92059c2d-6f68-4ad9-80bc-292b98f414c2",
+    "name": "API Laravel SIS047",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58733099",
+    "_collection_link": "https://go.postman.co/collection/58733099-92059c2d-6f68-4ad9-80bc-292b98f414c2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "añadir",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "  pm.collectionVariables.set('producto_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"nombre\": \"Producto Prueba\",\r\n    \"descripcion\": \"Descripción de prueba\",\r\n    \"precio\": 99.90\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "editar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"nombre\": \"Producto Editado\",\r\n    \"descripcion\": \"Texto nuevo\",\r\n    \"precio\": 120.50\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos/52",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos",
+                "52"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos/52",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos",
+                "52"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Almacenes",
+      "item": [
+        {
+          "name": "añadir",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "  pm.collectionVariables.set('almacen_id', pm.response.json().id);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"nombre\": \"Almacén Prueba\",\r\n    \"direccion\": \"Av. Ejemplo 123\",\r\n    \"ciudad\": \"Cusco\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/almacenes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "almacenes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "editar",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"nombre\": \"Almacén Prueba Editado\",\r\n    \"direccion\": \"Av. Nueva 456\",\r\n    \"ciudad\": \"Lima\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/almacenes/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "almacenes",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/almacenes/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "almacenes",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Proveedores",
+      "item": [
+        {
+          "name": "añadir",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "  pm.collectionVariables.set('ruc_nuevo', '20' + String(Math.floor(Math.random() * 1e9)).padStart(9, '0'));"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "  const j = pm.response.json();\r\n  pm.collectionVariables.set('proveedor_id', j.id);\r\n  pm.collectionVariables.set('proveedor_ruc', j.ruc);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n    \"nombre\": \"Proveedor Prueba SAC\",\r\n    \"ruc\": \"{{ruc_nuevo}}\",\r\n    \"telefono\": \"984111222\",\r\n    \"correo\": \"prueba@proveedor.pe\",\r\n    \"direccion\": \"Av. Ejemplo 123, Cusco\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/proveedores",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "editar",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "  {\r\n  \"nombre\": \"Proveedor Prueba Editado\",\r\n  \"telefono\": \"984333444\",\r\n  \"correo\": \"nuevo@proveedor.pe\",\r\n  \"direccion\": \"Av. Nueva 456, Cusco\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores/14",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Casos inválidos",
+      "item": [
+        {
+          "name": "1 - producto vacío",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - campos requeridos",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/productos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "productos"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:43:28 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The nombre field is required. (and 2 more errors)\",\n  \"errors\": {\n    \"nombre\": [\n      \"The nombre field is required.\"\n    ],\n    \"descripcion\": [\n      \"The descripcion field is required.\"\n    ],\n    \"precio\": [\n      \"The precio field is required.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "2 - producto precio negativo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Prueba\",\"descripcion\":\"Texto\",\"precio\":\"abc\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 2 - producto precio negativo",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Prueba\",\"descripcion\":\"Texto\",\"precio\":\"abc\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/productos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "productos"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:48:44 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The precio field must be a number.\",\n  \"errors\": {\n    \"precio\": [\n      \"The precio field must be a number.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "3 - producto precio negativo",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Prueba\",\"descripcion\":\"Texto\",\"precio\":-5}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "productos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 3 - producto precio negativo",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Prueba\",\"descripcion\":\"Texto\",\"precio\":-5}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/productos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "productos"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:50:16 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The precio field must be at least 0.\",\n  \"errors\": {\n    \"precio\": [\n      \"The precio field must be at least 0.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "4 - Almacén sin ciudad",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Almacén X\",\"direccion\":\"Av. 1\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/almacenes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "almacenes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 4 - Almacén sin ciudad",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Almacén X\",\"direccion\":\"Av. 1\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/almacenes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "almacenes"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:52:14 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The ciudad field is required.\",\n  \"errors\": {\n    \"ciudad\": [\n      \"The ciudad field is required.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "5 - Almacén nombre numérico",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":123,\"direccion\":\"Av. 1\",\"ciudad\":\"Cusco\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/almacenes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "almacenes"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 5 - Almacén nombre numérico",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":123,\"direccion\":\"Av. 1\",\"ciudad\":\"Cusco\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/almacenes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "almacenes"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:53:16 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The nombre field must be a string.\",\n  \"errors\": {\n    \"nombre\": [\n      \"The nombre field must be a string.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "6 - Proveedor RUC corto",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"12345\",\"telefono\":\"984000000\",\"correo\":\"a@b.pe\",\"direccion\":\"Av. 1\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 6 - Proveedor RUC corto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"12345\",\"telefono\":\"984000000\",\"correo\":\"a@b.pe\",\"direccion\":\"Av. 1\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/proveedores",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "proveedores"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:54:11 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The ruc field must be 11 digits.\",\n  \"errors\": {\n    \"ruc\": [\n      \"The ruc field must be 11 digits.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "7 - Proveedor RUC repetido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"20100000001\",\"telefono\":\"984000000\",\"correo\":\"a@b.pe\",\"direccion\":\"Av. 1\"}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 7 - Proveedor RUC repetido",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"20100000001\",\"telefono\":\"984000000\",\"correo\":\"a@b.pe\",\"direccion\":\"Av. 1\"}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/proveedores",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "proveedores"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:55:14 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The ruc has already been taken.\",\n  \"errors\": {\n    \"ruc\": [\n      \"The ruc has already been taken.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "8 - Proveedor correo inválido",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"20999999992\",\"telefono\":\"984000000\",\"correo\":\"no-es-correo\",\"direccion\":\"Av. 1\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 8 - Proveedor correo inválido",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nombre\":\"Prov X\",\"ruc\":\"20999999992\",\"telefono\":\"984000000\",\"correo\":\"no-es-correo\",\"direccion\":\"Av. 1\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/proveedores",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "proveedores"
+                  ]
+                }
+              },
+              "status": "Unprocessable Content",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:56:15 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The correo field must be a valid email address.\",\n  \"errors\": {\n    \"correo\": [\n      \"The correo field must be a valid email address.\"\n    ]\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "9 - Proveedor editar con RUC ajeno",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"ruc\":\"20100000002\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/proveedores/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "proveedores",
+                "1"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "422 - 9 - Proveedor editar con RUC ajeno",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"ruc\":\"20100000002\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8000/api/proveedores/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8000",
+                  "path": [
+                    "api",
+                    "proveedores",
+                    "1"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "host",
+                  "value": "localhost:8000"
+                },
+                {
+                  "key": "connection",
+                  "value": "close"
+                },
+                {
+                  "key": "x-powered-by",
+                  "value": "PHP/8.4.24"
+                },
+                {
+                  "key": "allow",
+                  "value": "GET, HEAD, PUT, PATCH, DELETE"
+                },
+                {
+                  "key": "cache-control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "date",
+                  "value": "Mon, 12 Oct 2026 04:57:04 GMT"
+                },
+                {
+                  "key": "content-type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "access-control-allow-origin",
+                  "value": "*"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"The POST method is not supported for route api/proveedores/1. Supported methods: GET, HEAD, PUT, PATCH, DELETE.\",\n  \"exception\": \"Symfony\\\\Component\\\\HttpKernel\\\\Exception\\\\MethodNotAllowedHttpException\",\n  \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\AbstractRouteCollection.php\",\n  \"line\": 130,\n  \"trace\": [\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\AbstractRouteCollection.php\",\n      \"line\": 115,\n      \"function\": \"requestMethodNotAllowed\",\n      \"class\": \"Illuminate\\\\Routing\\\\AbstractRouteCollection\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\AbstractRouteCollection.php\",\n      \"line\": 41,\n      \"function\": \"getRouteForMethods\",\n      \"class\": \"Illuminate\\\\Routing\\\\AbstractRouteCollection\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\RouteCollection.php\",\n      \"line\": 207,\n      \"function\": \"handleMatchedRoute\",\n      \"class\": \"Illuminate\\\\Routing\\\\AbstractRouteCollection\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n      \"line\": 777,\n      \"function\": \"match\",\n      \"class\": \"Illuminate\\\\Routing\\\\RouteCollection\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n      \"line\": 764,\n      \"function\": \"findRoute\",\n      \"class\": \"Illuminate\\\\Routing\\\\Router\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Routing\\\\Router.php\",\n      \"line\": 753,\n      \"function\": \"dispatchToRoute\",\n      \"class\": \"Illuminate\\\\Routing\\\\Router\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n      \"line\": 200,\n      \"function\": \"dispatch\",\n      \"class\": \"Illuminate\\\\Routing\\\\Router\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 180,\n      \"function\": \"{closure:Illuminate\\\\Foundation\\\\Http\\\\Kernel::dispatchToRouter():197}\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n      \"line\": 21,\n      \"function\": \"{closure:Illuminate\\\\Pipeline\\\\Pipeline::prepareDestination():178}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull.php\",\n      \"line\": 31,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\ConvertEmptyStringsToNull\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest.php\",\n      \"line\": 21,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings.php\",\n      \"line\": 51,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TransformsRequest\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\TrimStrings\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize.php\",\n      \"line\": 27,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePostSize\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance.php\",\n      \"line\": 110,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\PreventRequestsDuringMaintenance\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\HandleCors.php\",\n      \"line\": 74,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\HandleCors\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\TrustProxies.php\",\n      \"line\": 58,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\TrustProxies\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks.php\",\n      \"line\": 22,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Middleware\\\\InvokeDeferredCallbacks\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Http\\\\Middleware\\\\ValidatePathEncoding.php\",\n      \"line\": 28,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 219,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Http\\\\Middleware\\\\ValidatePathEncoding\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Pipeline\\\\Pipeline.php\",\n      \"line\": 137,\n      \"function\": \"{closure:{closure:Illuminate\\\\Pipeline\\\\Pipeline::carry():194}:195}\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n      \"line\": 175,\n      \"function\": \"then\",\n      \"class\": \"Illuminate\\\\Pipeline\\\\Pipeline\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Http\\\\Kernel.php\",\n      \"line\": 144,\n      \"function\": \"sendRequestThroughRouter\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Application.php\",\n      \"line\": 1227,\n      \"function\": \"handle\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Http\\\\Kernel\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\public\\\\index.php\",\n      \"line\": 20,\n      \"function\": \"handleRequest\",\n      \"class\": \"Illuminate\\\\Foundation\\\\Application\",\n      \"type\": \"->\"\n    },\n    {\n      \"file\": \"C:\\\\xampp\\\\htdocs\\\\example-app\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\resources\\\\server.php\",\n      \"line\": 23,\n      \"function\": \"require_once\"\n    }\n  ]\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "   pm.request.headers.upsert({ key: 'Accept', value: 'application/json' });"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    },
+    {
+      "key": "ruc_nuevo",
+      "value": ""
+    },
+    {
+      "key": "proveedor_id",
+      "value": ""
+    },
+    {
+      "key": "proveedor_ruc",
+      "value": ""
+    }
+  ]
+}
