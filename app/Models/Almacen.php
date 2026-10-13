@@ -8,5 +8,14 @@ class Almacen extends Model
 {
     protected $table = 'almacenes';
 
-    protected $fillable = ['nombre', 'direccion', 'ciudad'];
+    protected $fillable = [
+        'nombre',
+        'direccion',
+        'ciudad',
+    ];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class);
+    }
 }

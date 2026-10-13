@@ -6,31 +6,45 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
 use App\Models\Producto;
+use League\Uri\QueryString;
 
 class ProductoController extends Controller
 {
     public function index()
     {
-        return Producto::paginate(10);
+        return Producto::with('almacen', 'proveedores')->paginate(10);
     }
 
     public function show(Producto $producto)
     {
-        return $producto;
+        return $producto->load('almacen', 'proveedores');
     }
 
     public function store(StoreProductoRequest $request)
     {
-        $producto = Producto::create($request->validated());
+        $datos = $request->validated();
+        $proveedores = $datos['proveedores'] ?? [];
+        unset($datos['proveedores']);
 
-        return response()->json($producto, 201);
+        $producto = Producto::create($datos);
+        $producto->proveedores()->sync($proveedores);
+
+        return response()->json($producto->load('almacen', 'proveedores'), 201);
     }
 
     public function update(UpdateProductoRequest $request, Producto $producto)
     {
-        $producto->update($request->validated());
+        $datos = $request->validated();
+        $proveedores = $datos['proveedores'] ?? null;
+        unset($datos['proveedores']);
 
-        return response()->json($producto);
+        $producto->update($datos);
+
+        if ($proveedores !== null) {
+            $producto->proveedores()->sync($proveedores);
+        }
+
+        return response()->json($producto->load('almacen', 'proveedores'));
     }
 
     public function destroy(Producto $producto)
@@ -39,4 +53,4 @@ class ProductoController extends Controller
 
         return response()->noContent();
     }
-}
+};
